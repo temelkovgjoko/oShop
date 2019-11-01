@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms'
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from 'angularfire2';
@@ -21,6 +22,9 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-gard.service';
 import { UserService } from './user.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { CategoryService } from './category.service';
+import { ProductService } from './product.service';
 
 const appRoutes: Routes = [{ path: '', component: HomeComponent },
 { path: 'products', component: ProductsComponent },
@@ -49,6 +53,11 @@ const appRoutes: Routes = [{ path: '', component: HomeComponent },
   canActivate: [AuthGuard, AdminAuthGuard]
 },
 {
+  path: 'admin/products/new',
+  component: ProductFormComponent,
+  canActivate: [AuthGuard, AdminAuthGuard]
+},
+{
   path: 'admin/orders',
   component: AdminOrdersComponent,
   canActivate: [AuthGuard, AdminAuthGuard]
@@ -65,10 +74,11 @@ const appRoutes: Routes = [{ path: '', component: HomeComponent },
     OrderSuccessComponent,
     MyOrdersComponent,
     AdminProductsComponent,
-    AdminOrdersComponent, LoginComponent
+    AdminOrdersComponent, LoginComponent, ProductFormComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -80,8 +90,10 @@ const appRoutes: Routes = [{ path: '', component: HomeComponent },
   providers: [
     AuthService,
     AuthGuard,
+    AdminAuthGuard,
     UserService,
-    AdminAuthGuard
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
