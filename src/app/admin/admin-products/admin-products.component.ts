@@ -1,8 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator'
 import { ProductService } from 'src/app/product.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+
+import { Product } from './../../models/product'
+import { DataTableResource } from 'angular5-data-table';
 
 @Component({
   selector: 'app-admin-products',
@@ -10,9 +14,18 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
-  products: {}[];
+  products: Product[];
   filteredProducts: any[];
   subscription: Subscription;
+  tableResource: DataTableResource<Product>
+  items: Product[] = [];
+  itemCount: number;
+
+
+  // MatPaginator Output
+  pageEvent: PageEvent;
+
+
   constructor(
     private router: Router,
     private productService: ProductService) {
@@ -20,7 +33,26 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
       map(changes => {
         return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       })
-    ).subscribe(products => this.filteredProducts = this.products = products);
+    ).subscribe(products => {
+      let to = products as Product[]
+      this.filteredProducts = this.products = to;
+      this.initializeTable(to)
+
+    });
+  }
+
+ 
+
+  private initializeTable(products: Product[]) {
+    this.tableResource = new DataTableResource(products);
+    this.tableResource.query({ offset: 0 }).then(items => this.items = items);
+    this.tableResource.count().then(count => this.itemCount = count);
+  }
+
+  reloadItems(params) {
+    if (!this.tableResource) return
+    this.tableResource.query(params)
+      .then(items => this.items = items)
   }
 
   filter(query: string) {

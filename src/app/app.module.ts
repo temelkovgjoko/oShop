@@ -26,6 +26,10 @@ import { AdminAuthGuard } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DataTableModule } from 'angular5-data-table';
+
+
 
 const appRoutes: Routes = [{ path: '', component: HomeComponent },
 { path: 'products', component: ProductsComponent },
@@ -89,8 +93,11 @@ const appRoutes: Routes = [{ path: '', component: HomeComponent },
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule,
-    RouterModule.forRoot(appRoutes,
-    )
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    DataTableModule.forRoot()
+
+
 
   ],
   providers: [
