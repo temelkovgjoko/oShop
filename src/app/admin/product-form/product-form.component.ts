@@ -18,7 +18,7 @@ export class ProductFormComponent implements OnInit {
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private productService: ProductService) {
-    this.categories$ = this.categoryService.getCategories().snapshotChanges().pipe(
+    this.categories$ = this.categoryService.getAll().snapshotChanges().pipe(
       map(changes => {
         return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       })

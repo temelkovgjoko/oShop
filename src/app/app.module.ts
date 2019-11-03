@@ -31,7 +31,7 @@ import { DataTableModule } from 'angular5-data-table';
 
 
 
-const appRoutes: Routes = [{ path: '', component: HomeComponent },
+const appRoutes: Routes = [{ path: '', component: ProductsComponent },
 { path: 'products', component: ProductsComponent },
 { path: 'shopping-cart', component: ShoppingCartComponent },
 { path: 'login', component: LoginComponent },
