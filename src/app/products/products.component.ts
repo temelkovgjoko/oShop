@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { Product } from '../models/product';
 import { ProductService } from '../product.service';
-import { map } from 'rxjs/operators';
-import { CategoryService } from '../category.service';
+import { UtilitesService } from '../utilites.service';
 
 @Component({
   selector: 'app-products',
@@ -9,20 +11,26 @@ import { CategoryService } from '../category.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
-  products$
-  categories$
-  constructor(productService: ProductService, categoryService: CategoryService) {
-    this.products$ = productService.getAll().snapshotChanges().pipe(
-      map(changes => {
-        return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-      })
-    )
+  products: Product[] = [];
+  filteredProducts: Product[] = [];
+  public category: string;
 
-    this.categories$ = categoryService.getAll().snapshotChanges().pipe(
-      map(changes => {
-        return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-      })
-    )
+  constructor(
+    route: ActivatedRoute,
+    productService: ProductService,
+    utilitiesService: UtilitesService) {
+    // GET PRODUCTS
+    utilitiesService.converter(productService.getAll())
+      .subscribe(products => { this.products = products as Product[] })
+    // FILTER PRODUCTS BY CATEGORY
+    route.queryParamMap.subscribe(params => {
+      this.category = params.get('category');
+
+      this.filteredProducts = (this.category) ?
+        this.products.filter(p => p.category === this.category) : this.products;
+    })
+
+    // GET CATEGORIES
+
   }
-
 }

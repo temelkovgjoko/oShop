@@ -28,6 +28,8 @@ import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTableModule } from 'angular5-data-table';
+import { UtilitesService } from './utilites.service';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 
 
 
@@ -83,7 +85,7 @@ const appRoutes: Routes = [{ path: '', component: ProductsComponent },
     OrderSuccessComponent,
     MyOrdersComponent,
     AdminProductsComponent,
-    AdminOrdersComponent, LoginComponent, ProductFormComponent
+    AdminOrdersComponent, LoginComponent, ProductFormComponent, ProductFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +108,8 @@ const appRoutes: Routes = [{ path: '', component: ProductsComponent },
     AdminAuthGuard,
     UserService,
     CategoryService,
-    ProductService
+    ProductService,
+    UtilitesService
   ],
   bootstrap: [AppComponent]
 })
