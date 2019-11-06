@@ -31,6 +31,7 @@ import { DataTableModule } from 'angular5-data-table';
 import { UtilitesService } from './utilites.service';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { ShoppingCartService } from './shopping-cart.service';
 
 
 
@@ -110,7 +111,8 @@ const appRoutes: Routes = [{ path: '', component: ProductsComponent },
     UserService,
     CategoryService,
     ProductService,
-    UtilitesService
+    UtilitesService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })
