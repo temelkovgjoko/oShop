@@ -32,6 +32,7 @@ import { UtilitesService } from './utilites.service';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ShoppingCartService } from './shopping-cart.service';
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 
 
 
@@ -87,7 +88,7 @@ const appRoutes: Routes = [{ path: '', component: ProductsComponent },
     OrderSuccessComponent,
     MyOrdersComponent,
     AdminProductsComponent,
-    AdminOrdersComponent, LoginComponent, ProductFormComponent, ProductFilterComponent, ProductCardComponent
+    AdminOrdersComponent, LoginComponent, ProductFormComponent, ProductFilterComponent, ProductCardComponent, ProductQuantityComponent
   ],
   imports: [
     BrowserModule,
