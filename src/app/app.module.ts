@@ -33,6 +33,9 @@ import { ProductFilterComponent } from './products/product-filter/product-filter
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ShoppingCartService } from './shopping-cart.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { OrderService } from './order.service';
+import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
+import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 
 
 
@@ -47,7 +50,7 @@ const appRoutes: Routes = [{ path: '', component: ProductsComponent },
   canActivate: [AuthGuard]
 },
 {
-  path: 'order-success',
+  path: 'order-success/:id',
   component: OrderSuccessComponent,
   canActivate: [AuthGuard]
 },
@@ -88,7 +91,7 @@ const appRoutes: Routes = [{ path: '', component: ProductsComponent },
     OrderSuccessComponent,
     MyOrdersComponent,
     AdminProductsComponent,
-    AdminOrdersComponent, LoginComponent, ProductFormComponent, ProductFilterComponent, ProductCardComponent, ProductQuantityComponent
+    AdminOrdersComponent, LoginComponent, ProductFormComponent, ProductFilterComponent, ProductCardComponent, ProductQuantityComponent, ShoppingCartSummaryComponent, ShippingFormComponent
   ],
   imports: [
     BrowserModule,
@@ -113,7 +116,8 @@ const appRoutes: Routes = [{ path: '', component: ProductsComponent },
     CategoryService,
     ProductService,
     UtilitesService,
-    ShoppingCartService
+    ShoppingCartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })
