@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator'
-import { ProductService } from 'src/app/product.service';
+
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
-import { Product } from './../../models/product'
+import { Product } from '../../shared/models/product'
 import { DataTableResource } from 'angular5-data-table';
+import { ProductService } from 'shared/services/product.service';
 
 @Component({
   selector: 'app-admin-products',

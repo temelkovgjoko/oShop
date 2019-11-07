@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from 'src/app/category.service';
+
 import { map, take } from 'rxjs/operators';
-import { ProductService } from 'src/app/product.service';
+
 import { Router, ActivatedRoute } from '@angular/router';
-import { UtilitesService } from 'src/app/utilites.service';
+import { CategoryService } from 'shared/services/category.service';
+import { ProductService } from 'shared/services/product.service';
+import { UtilitesService } from 'shared/services/utilites.service';
+
 
 @Component({
   selector: 'app-product-form',
