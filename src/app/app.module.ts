@@ -9,12 +9,13 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { CustomFormsModule } from 'ng2-validation';
+import { SharedModule } from 'shared/shared.module';
 
 import { environment } from '../environments/environment';
-import { AdminAuthGuard } from './admin-auth-guard.service';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orders.component';
+import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
+import { ProductFormComponent } from './admin/components/product-form/product-form.component';
+import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { CheckOutComponent } from './check-out/check-out.component';
@@ -28,7 +29,7 @@ import { AuthGuard } from './shared/services/auth-gard.service';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { SharedModule } from 'shared/shared.module';
+import { AdminModule } from './admin/admin.module';
 
 
 
@@ -83,12 +84,8 @@ const appRoutes: Routes = [{ path: '', component: ProductsComponent },
     CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent,
     ProductFilterComponent,
-
     ShoppingCartSummaryComponent,
     ShippingFormComponent
   ],
@@ -103,10 +100,8 @@ const appRoutes: Routes = [{ path: '', component: ProductsComponent },
     NgbModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    DataTableModule.forRoot()
-
-
-
+    DataTableModule.forRoot(),
+    AdminModule
   ],
   providers: [
     AdminAuthGuard,

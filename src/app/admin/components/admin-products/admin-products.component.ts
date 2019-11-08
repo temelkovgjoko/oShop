@@ -1,13 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator'
-
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
-
-import { Product } from '../../shared/models/product'
 import { DataTableResource } from 'angular5-data-table';
+import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { ProductService } from 'shared/services/product.service';
+import { Product } from 'shared/models/product';
 
 @Component({
   selector: 'app-admin-products',
@@ -16,7 +15,7 @@ import { ProductService } from 'shared/services/product.service';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
   products: Product[];
-  
+
   subscription: Subscription;
   tableResource: DataTableResource<Product>
   items: Product[] = [];
