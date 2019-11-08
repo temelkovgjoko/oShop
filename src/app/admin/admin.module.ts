@@ -8,8 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'shared/shared.module';
 import { DataTableModule } from 'angular5-data-table';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductsComponent } from 'app/products/products.component';
+
 import { AuthGuard } from 'shared/services/auth-gard.service';
+import { ProductsComponent } from 'app/shopping/components/products/products.component';
 
 const appRoutes: Routes = [{ path: '', component: ProductsComponent },
 
