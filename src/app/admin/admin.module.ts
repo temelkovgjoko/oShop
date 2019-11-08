@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AdminProductsComponent } from './components/admin-products/admin-products.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ProductsComponent } from 'app/shopping/components/products/products.component';
+import { AuthGuard } from 'shared/services/auth-gard.service';
+import { SharedModule } from 'shared/shared.module';
+
 import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
+import { AdminProductsComponent } from './components/admin-products/admin-products.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
-import { FormsModule } from '@angular/forms';
-import { SharedModule } from 'shared/shared.module';
-import { DataTableModule } from 'angular5-data-table';
-import { RouterModule, Routes } from '@angular/router';
-
-import { AuthGuard } from 'shared/services/auth-gard.service';
-import { ProductsComponent } from 'app/shopping/components/products/products.component';
 
 const appRoutes: Routes = [{ path: '', component: ProductsComponent },
 
@@ -42,10 +39,7 @@ const appRoutes: Routes = [{ path: '', component: ProductsComponent },
     ProductFormComponent,
   ],
   imports: [
-    CommonModule,
-    FormsModule,
     SharedModule,
-    DataTableModule.forRoot(),
     RouterModule.forChild(appRoutes),
 
   ],
